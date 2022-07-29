@@ -1,0 +1,37 @@
+{
+  "name": "handlebars-example",
+  "version": "1.0.0",
+  "description": "Understanding concepts of handlebars.js",
+  "main": "./src/js/index",
+  "scripts": {
+    "start": "webpack serve --mode development",
+    "build": "rm -r dist && webpack --mode production"
+  },
+  "keywords": [
+    "handlebars",
+    "javascript"
+  ],
+  "author": "Mauricio Rodriguez <mrodriguezv92@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "babel-loader": "^8.2.5",
+    "bulma": "^0.9.4",
+    "css-loader": "^6.7.1",
+    "css-minimizer-webpack-plugin": "^4.0.0",
+    "eslint": "^8.20.0",
+    "handlebars-loader": "^1.7.2",
+    "html-loader": "^4.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "sass": "^1.54.0",
+    "sass-loader": "^13.0.2",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  }
+}

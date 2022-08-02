@@ -2,7 +2,7 @@
   "name": "handlebars-example",
   "version": "1.0.0",
   "description": "Understanding concepts of handlebars.js",
-  "main": "./src/js/index",
+  "main": "./src/scripts/index",
   "scripts": {
     "start": "webpack serve --mode development",
     "build": "rm -r dist && webpack --mode production"

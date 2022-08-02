@@ -1,0 +1,76 @@
+@use '../helpers/variables' as *;
+
+.card {
+  margin-top: 15px;
+
+  &__header {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 6% 8% 8% 8%;
+
+    &--image {
+      background-color: #050709;
+      background-image: url('../assets/HeroImagelg.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
+    }
+  }
+
+  &__body {
+    border-end-end-radius: 20px;
+    border-end-start-radius: 20px;
+  }
+}
+
+.form {
+  &__title {
+    svg {
+      display: block;
+      width: 80%;
+      height: 0%;
+
+      path {
+        fill: #fff;
+      }
+    }
+  }
+
+  &__body {
+    color: #fff;
+  }
+}
+
+.input-search {
+  position: relative;
+
+  &__body {
+    padding: 10px 0px 10px 10px;
+    width: 100%;
+    padding-right: 52px;
+    border-style: none;
+    border-radius: 20px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 100%;
+    margin-left: 20px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: 12px;
+    }
+  }
+
+  &__result {
+  }
+}

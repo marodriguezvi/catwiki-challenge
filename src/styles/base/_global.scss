@@ -1,16 +1,23 @@
-.container {
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
 .w-3 {
   width: 30%;
 }
 
-.mt-2 {
-  margin-top: 15px;
-}
+.custom-scroll {
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
 
-.mt-3 {
-  margin-top: 30px;
+  &::-webkit-scrollbar-button {
+    padding: auto;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #bdbdbd;
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f2f2f2;
+  }
 }

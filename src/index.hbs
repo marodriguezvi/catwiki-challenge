@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
-  {{> handlebars/partials/head }}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catwiki</title>
+    <link rel="icon" href="assets/devchallenges.png" />
+  </head>
   <body>
     <div class="container">
-      {{> handlebars/partials/header }}
+      <header class="mt-2">
+        <a href="/">{{> handlebars/partials/logo }}</a>
+      </header>
       <main>
         {{> handlebars/home }}
       </main>

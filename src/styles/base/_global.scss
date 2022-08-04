@@ -2,6 +2,10 @@
   width: 30%;
 }
 
+.hidden {
+  display: none;
+}
+
 .custom-scroll {
   &::-webkit-scrollbar {
     width: 4px;

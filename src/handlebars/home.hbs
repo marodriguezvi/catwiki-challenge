@@ -1,34 +1,21 @@
-<div id="home-template-content"></div>
-
-<script id="home-template" type="text/x-handlebars-template">
-  <div class="card">
-    <div class="card__header card__header--image">
-      <div class="form w-3">
-        <div class="form__title">
-          {{> partials/logo }}
-        </div>
-        <div class="form__body">
-          <p>Get to know more about your cat breed</p>
-          <div class="input-search">
-            <input id="search-input" class="input-search__body" type="search" placeholder="Enter your breed">
-            <div class="input-search__image">
-              {{> partials/loupe_icon }}
-            </div>
-            <div id="search-result" class="input-search__result">
-              <ul class="list custom-scroll">
-                <li class="list__item">americnaldsf l asdfas</li>
-                <li class="list__item">alnlv pqoweurpq nasdf</li>
-                <li class="list__item">Lorem ipsum, dolor sit</li>
-                <li class="list__item">amet consectetur </li>
-                <li class="list__item">elit. Autem molestiae</li>
-                <li class="list__item">obcaecati quam?</li>
-                <li class="list__item">eum impedit quae</li>
-              </ul>
-            </div>
+<div class="card">
+  <div class="card__header card__header--image">
+    <div class="form w-3">
+      <div class="form__title">
+        {{>partials/logo}}
+      </div>
+      <div class="form__body">
+        <p>Get to know more about your cat breed</p>
+        <div class="input-search">
+          <input id="search-input" class="input-search__body" type="text" autocomplete="off"
+            placeholder="Enter your breed">
+          <div class="input-search__image">
+            {{>partials/loupe_icon}}
           </div>
+          <div id="list-template-content" class="input-search__result hidden"></div>
         </div>
       </div>
     </div>
-    <div class="card_body"></div>
   </div>
-</script>
+  <div class="card_body"></div>
+</div>

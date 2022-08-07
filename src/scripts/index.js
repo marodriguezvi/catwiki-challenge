@@ -20,13 +20,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function setListBreeds() {
   const searchInput = document.getElementById('search-input');
   const listContent = document.getElementById('list-template-content');
-  const searchResult = document.getElementById('list-template-content');
-  const imageContainer = document.querySelector('.card__body .image-container');
+  const imageContainer = document.querySelector('.search__body .galery__item');
 
   getBreeds().then((res) => {
     const data = res.data;
     listContent.innerHTML = listTemplate({ breeds: data });
-    searchResult.style.width = `${searchInput.offsetWidth}px`;
+    listContent.style.width = `${searchInput.offsetWidth}px`;
     setListItemEvent();
 
     searchInput.addEventListener('input', (event) => {
@@ -41,22 +40,22 @@ function setListBreeds() {
   });
 
   window.addEventListener('resize', () => {
-    const images = document.querySelectorAll('.card__body .image');
-    searchResult.style.width = `${searchInput.offsetWidth}px`;
-    console.log(imageContainer.offsetWidth);
+    const images = document.querySelectorAll('.search__body .image');
+    listContent.style.width = `${searchInput.offsetWidth}px`;
+
     images.forEach((el) => {
       el.style.height = `${imageContainer.offsetWidth}px`;
     });
   });
 
   searchInput.addEventListener('focus', () => {
-    searchResult.classList.remove('hidden');
+    listContent.classList.remove('hidden');
   });
 
   searchInput.addEventListener('blur', (event) => {
     event.preventDefault();
     setTimeout(() => {
-      searchResult.classList.add('hidden');
+      listContent.classList.add('hidden');
     }, 200);
   });
 }

@@ -1,9 +1,39 @@
-.w-3 {
-  width: 30%;
-}
+@use '../helpers/variables' as *;
 
 .hidden {
   display: none;
+}
+
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  &.flex-direction-row {
+    flex-direction: row;
+  }
+
+  &.align-items-center {
+    align-items: center;
+  }
+
+  &.align-items-end {
+    align-items: flex-end;
+  }
+
+  &.justify-content-between {
+    justify-content: space-between;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: $light-brown-color;
+}
+
+.image {
+  width: 100%;
 }
 
 .custom-scroll {
@@ -24,4 +54,8 @@
   &::-webkit-scrollbar-track {
     background: #f2f2f2;
   }
+}
+
+.round-image {
+  border-radius: 20px;
 }

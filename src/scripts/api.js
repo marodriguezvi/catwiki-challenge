@@ -11,7 +11,7 @@ axios.defaults.headers.common['x-api-key'] = process.env.API_KEY;
  * @return {Promise} A axios promise
  */
 function getBreeds() {
-  return axios.get('breeds');
+  return axios.get('/v1/breeds');
 }
 
 export { getBreeds };

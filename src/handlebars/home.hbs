@@ -1,21 +1,39 @@
-<div class="card">
-  <div class="card__header card__header--image">
-    <div class="form w-3">
-      <div class="form__title">
-        {{>partials/logo}}
-      </div>
-      <div class="form__body">
-        <p>Get to know more about your cat breed</p>
-        <div class="input-search">
-          <input id="search-input" class="input-search__body" type="text" autocomplete="off"
-            placeholder="Enter your breed">
-          <div class="input-search__image">
-            {{>partials/loupe_icon}}
+<div>
+  <section>
+    <div class="card">
+      <div class="card__header bg-image">
+        <div class="form">
+          <div class="form__title">
+            {{>partials/logo}}
           </div>
-          <div id="list-template-content" class="input-search__result hidden"></div>
+          <div class="form__body">
+            <p>Get to know more about your cat breed</p>
+            <div class="input-search">
+              <input id="search-input" class="input-search__body" type="text" autocomplete="off"
+                placeholder="Enter your breed">
+              <div class="input-search__image">
+                {{>partials/loupe_icon}}
+              </div>
+              <div id="list-template-content" class="input-search__result hidden"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card__body">
+        <p class="caption">Most Searched Breeds</p>
+        <div class="d-flex align-items-end justify-content-between">
+          <h1 class="title">66+ Breeds For you to discover</h1>
+          <a href="#" class="link">SEE MORE ➙</a>
+        </div>
+        <div class="d-flex justify-content-between flex-direction-row">
+          {{#each searchBreedsSrc}}
+          <div class="image-container">
+            <img class="image round-image" src={{src}} alt="cat image">
+            <p>{{name}}</p>
+          </div>
+          {{/each}}
         </div>
       </div>
     </div>
-  </div>
-  <div class="card_body"></div>
+  </section>
 </div>

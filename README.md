@@ -1,6 +1,7 @@
 # Catwiki
 
-Short example about handlebars.
+Short example about handlebars based on the [devChallengs](https://devchallenges.io) site.
+[CatWiki challenge](https://devchallenges.io/challenges/f4NJ53rcfgrP6sBMD2jt)
 
 ## Build Setup
 

@@ -77,10 +77,6 @@ function setListItemEvent() {
  * Get image src for the most searched breeds.
  */
 function getSearchedBreedsSrc() {
-  MOST_SEARCHED_BREEDS.sort(() => {
-    return Math.random() - 0.5;
-  });
-
   return MOST_SEARCHED_BREEDS.slice(0, 4).map((el) => {
     return {
       src: getSrcImage(el.id),

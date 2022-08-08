@@ -1,32 +1,5 @@
 @use '../helpers/variables' as *;
 
-.hidden {
-  display: none;
-}
-
-.d-flex {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  margin-bottom: 20px;
-
-  &.flex-direction-row {
-    flex-direction: row;
-  }
-
-  &.align-items-center {
-    align-items: center;
-  }
-
-  &.align-items-end {
-    align-items: flex-end;
-  }
-
-  &.justify-content-between {
-    justify-content: space-between;
-  }
-}
-
 .link {
   text-decoration: none;
   color: $light-brown-color;
@@ -35,6 +8,24 @@
 .image {
   width: 100%;
   border-radius: 20px;
+}
+
+.title {
+  position: relative;
+  color: $brown-color;
+
+  &--line::before {
+    content: '';
+    position: absolute;
+    top: -0.3em;
+    width: 1.2em;
+    height: 0.07em;
+    background-color: currentColor;
+  }
+}
+
+.hidden {
+  display: none;
 }
 
 .custom-scroll {

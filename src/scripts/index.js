@@ -1,10 +1,15 @@
+/*global require*/
+/*eslint no-undef: "error"*/
+
 import homeTemplate from '../handlebars/home.hbs';
 import listTemplate from '../handlebars/partials/list.hbs';
 
 import '../styles/index.scss';
 import { getBreeds } from './api';
-import { getSrcImage } from './utils';
+import { getSrcImage, importAll } from './utils';
 import { MOST_SEARCHED_BREEDS } from './constants';
+
+importAll(require.context('../assets/', false, /\.png$/));
 
 document.addEventListener('DOMContentLoaded', () => {
   let homeContent = document.getElementById('home-template-content');

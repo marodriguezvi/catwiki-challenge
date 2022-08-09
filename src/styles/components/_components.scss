@@ -1,3 +1,5 @@
+@use '../helpers/variables' as *;
+
 .search-input {
   position: relative;
 
@@ -58,18 +60,13 @@
 }
 
 .galery {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  column-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  grid-gap: 2%;
 
   &__item {
-    width: 17vw;
-    min-width: 145px;
-
     .image {
-      height: 17.5vw;
+      height: 17vw;
       object-fit: cover;
     }
   }

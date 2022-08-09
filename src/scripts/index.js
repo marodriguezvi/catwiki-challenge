@@ -73,7 +73,7 @@ function setListItemEvent() {
 
   listItems.forEach((item) => {
     item.addEventListener('click', (event) => {
-      alert(event.target.dataset.id);
+      console.log(event.target.dataset.id);
     });
   });
 }

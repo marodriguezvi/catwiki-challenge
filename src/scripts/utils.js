@@ -3,11 +3,13 @@
 
 /**
  * Build src image.
- * @param {String} breed_id - Breed id.
+ * @param {String} breedId - Breed id.
+ * @param {String} size - Image size.
  * @return {URL} URL for the image src.
  */
-function getSrcImage(breed_id) {
-  return `${process.env.API_URL}/v1/images/search?has_breeds=1&breed_ids=${breed_id}&format=src&mime_types=jpg&size=small`;
+function getSrcImage(breedId = '', size = 'small') {
+  const query = `search?has_breeds=1&breed_ids=${breedId}&format=src&mime_types=jpg&size=${size}`;
+  return `${process.env.API_URL}/v1/images/${query}`;
 }
 
 /**

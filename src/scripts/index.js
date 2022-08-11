@@ -1,47 +1,37 @@
 /*global require*/
 /*eslint no-undef: "error"*/
 
-import homeTemplate from '../handlebars/home.hbs';
-import listTemplate from '../handlebars/partials/list.hbs';
-
 import '../styles/index.scss';
 import { getBreeds } from './api';
 import { getSrcImage, importAll } from './utils';
 import { MOST_SEARCHED_BREEDS } from './constants';
+import homeTemplate from '../handlebars/home.hbs';
+import listTemplate from '../handlebars/partials/list.hbs';
 
 importAll(require.context('../assets/', false, /\.png$/));
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   let homeContent = document.getElementById('home-template-content');
   const searchBreedsSrc = getSearchedBreedsSrc();
-  const data = { searchBreedsSrc };
-  homeContent.innerHTML = homeTemplate(data);
-  setListBreeds();
-});
+  homeContent.innerHTML = homeTemplate({ searchBreedsSrc });
 
-/**
- * Create breed list and add events.
- */
-function setListBreeds() {
   const searchInput = document.getElementById('search-input');
   const listContent = document.getElementById('list-template-content');
   const imageContainer = document.querySelector('.search__body .galery__item');
 
-  getBreeds().then((res) => {
-    const data = res.data;
-    listContent.innerHTML = listTemplate({ breeds: data });
-    listContent.style.width = `${searchInput.offsetWidth}px`;
-    setListItemEvent();
+  const data = await getBreeds();
+  listContent.innerHTML = listTemplate({ breeds: data });
+  listContent.style.width = `${searchInput.offsetWidth}px`;
+  setListItemEvent(listContent);
 
-    searchInput.addEventListener('input', (event) => {
-      const filterText = event.target.value;
-      const filterBreeds = data.filter((item) => {
-        return item.name.toLowerCase().match(filterText);
-      });
-
-      listContent.innerHTML = listTemplate({ breeds: filterBreeds });
-      setListItemEvent();
+  searchInput.addEventListener('input', (event) => {
+    const filterText = event.target.value;
+    const filterBreeds = data.filter((item) => {
+      return item.name.toLowerCase().match(filterText);
     });
+
+    listContent.innerHTML = listTemplate({ breeds: filterBreeds });
+    setListItemEvent();
   });
 
   window.addEventListener('resize', () => {
@@ -63,18 +53,21 @@ function setListBreeds() {
       listContent.classList.add('hidden');
     }, 200);
   });
-}
+
+  listContent.addEventListener('click', (e) => {
+    console.log(e.target);
+  });
+});
 
 /**
  * Set event for list items.
+ * @param {HTMLElement} listElement - Element to add event
  */
-function setListItemEvent() {
-  const listItems = document.querySelectorAll('.list__item');
-
-  listItems.forEach((item) => {
-    item.addEventListener('click', (event) => {
-      console.log(event.target.dataset.id);
-    });
+function setListItemEvent(listElement) {
+  listElement.addEventListener('click', (event) => {
+    if (event.target.dataset.id) {
+      window.location.assign(`${window.location.origin}/info.html?id=${event.target.dataset.id}`);
+    }
   });
 }
 

@@ -19,10 +19,11 @@ async function getBreeds() {
 /**
  * Get breed.
  * @param {Array} breedIds - Breed id list.
+ * @param {Number} limit - Response limit.
  * @return {Promise} Promise with data.
  */
-async function getBreedImage(breedIds) {
-  let params = { has_breeds: 1, format: 'json', mime_type: 'jpg' };
+async function getBreedImage(breedIds, limit = 1) {
+  let params = { has_breeds: 1, format: 'json', mime_type: 'jpg', limit };
   try {
     const responses = await Promise.all(
       breedIds.map((breedId) => {
@@ -30,7 +31,7 @@ async function getBreedImage(breedIds) {
         return axios.get('/v1/images/search', { params });
       }),
     );
-    const data = responses.map((response) => response.data[0]);
+    const data = responses.map((response) => response.data);
     return data;
   } catch (error) {
     console.log(error);

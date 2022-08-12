@@ -9,9 +9,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  const response = await getBreedImage([searchParams.get('id')]);
-  console.log(response);
-  const data = { breedInfo: response[0].breeds[0], imageUrl: response[0].url };
+  let response = await getBreedImage([searchParams.get('id')], 9);
+  response = response[0];
+  const breedImages = response.map((el) => {
+    return el.url;
+  });
+  const data = {
+    breedInfo: response[0].breeds[0],
+    breedImage: breedImages[0],
+    otherImage: breedImages.slice(1),
+  };
   homeContent.innerHTML = infoTemplate(data);
 
   window.addEventListener('resize', () => {

@@ -1,6 +1,6 @@
 import '../styles/index.scss';
 import { getBreedImage } from './api';
-import infoTemplate from '../handlebars/info.hbs';
+import infoTemplate from '../templates/info.hbs';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const homeContent = document.getElementById('info-template-content');

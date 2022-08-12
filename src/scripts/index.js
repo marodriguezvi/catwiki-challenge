@@ -2,8 +2,8 @@ import '../styles/index.scss';
 import { getBreeds } from './api';
 import { getSrcImage, importAll } from './utils';
 import { MOST_SEARCHED_BREEDS } from './constants';
-import homeTemplate from '../handlebars/home.hbs';
-import listTemplate from '../handlebars/partials/list.hbs';
+import homeTemplate from '../templates/home.hbs';
+import listTemplate from '../templates/partials/list.hbs';
 
 importAll(require.context('../assets/', false, /\.png$/));
 

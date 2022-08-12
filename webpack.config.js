@@ -13,6 +13,9 @@ module.exports = {
     info: {
       import: './src/scripts/info.js',
     },
+    top: {
+      import: './src/scripts/top.js',
+    },
   },
   output: {
     path: path.resolve(__dirname, 'dist/'),
@@ -51,8 +54,8 @@ module.exports = {
         test: /\.hbs$/,
         loader: 'handlebars-loader',
         options: {
-          helperDirs: path.resolve(__dirname, 'src/handlebars/helpers'),
-          partialDirs: path.resolve(__dirname, 'src/handlebars/partials'),
+          helperDirs: path.resolve(__dirname, 'src/templates/helpers'),
+          partialDirs: path.resolve(__dirname, 'src/templates/partials'),
         },
       },
       {
@@ -98,6 +101,11 @@ module.exports = {
       template: path.resolve(__dirname, './src/info.hbs'),
       chunks: ['info'],
       filename: './info.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './src/top.hbs'),
+      chunks: ['top'],
+      filename: './top.html',
     }),
     new MiniCssExtractPlugin({
       filename: 'main.css',

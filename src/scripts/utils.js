@@ -1,6 +1,3 @@
-/*global process*/
-/*eslint no-undef: "error"*/
-
 /**
  * Build src image.
  * @param {String} breedId - Breed id.

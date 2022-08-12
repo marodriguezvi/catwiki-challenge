@@ -1,6 +1,3 @@
-/*global require*/
-/*eslint no-undef: "error"*/
-
 import '../styles/index.scss';
 import { getBreeds } from './api';
 import { getSrcImage, importAll } from './utils';
@@ -31,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     listContent.innerHTML = listTemplate({ breeds: filterBreeds });
-    setListItemEvent();
+    setListItemEvent(listContent);
   });
 
   window.addEventListener('resize', () => {
@@ -52,10 +49,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     setTimeout(() => {
       listContent.classList.add('hidden');
     }, 200);
-  });
-
-  listContent.addEventListener('click', (e) => {
-    console.log(e.target);
   });
 });
 

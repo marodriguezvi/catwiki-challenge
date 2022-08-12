@@ -39,7 +39,6 @@ const MOST_SEARCHED_BREEDS = [
     id: 'rblu',
     name: 'Russian Blue',
   },
-
 ];
 
 export { MOST_SEARCHED_BREEDS };

@@ -1,18 +1,33 @@
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 module.exports = {
-  entry: './src/scripts/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+  entry: {
+    index: {
+      import: './src/scripts/index.js',
+    },
+    info: {
+      import: './src/scripts/info.js',
+    },
   },
+  output: {
+    path: path.resolve(__dirname, 'dist/'),
+    filename: 'js/[name].bundle.js',
+    clean: true,
+  },
+  devtool: 'inline-source-map',
   devServer: {
     hot: false,
     liveReload: true,
+  },
+  resolve: {
+    alias: {
+      handlebars: 'handlebars/dist/cjs/handlebars',
+    },
   },
   module: {
     rules: [
@@ -32,7 +47,14 @@ module.exports = {
           },
         },
       },
-      { test: /\.hbs$/, loader: 'handlebars-loader' },
+      {
+        test: /\.hbs$/,
+        loader: 'handlebars-loader',
+        options: {
+          helperDirs: path.resolve(__dirname, 'src/handlebars/helpers'),
+          partialDirs: path.resolve(__dirname, 'src/handlebars/partials'),
+        },
+      },
       {
         test: /\.s[ac]ss$/i,
         use: [
@@ -60,12 +82,22 @@ module.exports = {
     ],
   },
   optimization: {
-    minimizer: [new CssMinimizerPlugin()],
+    minimize: true,
+    minimizer: [new TerserPlugin(), new CssMinimizerPlugin()],
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/index.hbs'),
+      chunks: ['index'],
       filename: './index.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './src/info.hbs'),
+      chunks: ['info'],
+      filename: './info.html',
     }),
     new MiniCssExtractPlugin({
       filename: 'main.css',

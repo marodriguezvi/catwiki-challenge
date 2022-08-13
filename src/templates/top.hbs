@@ -1,0 +1,14 @@
+<section class="top-list">
+  <h1 class="title">Top 10 most searched breeds</h1>
+  {{#each breeds}}
+    <div class="top-list__item">
+      <div class="top-list__image">
+        <img src={{imageUrl}} class="image" alt="cat image">
+      </div>
+      <div class="top-list__paragraph">
+        <h2 class="top-list__title title">{{index}}. {{name}}</h2>
+        <p>{{description}}</p>
+      </div>
+    </div>
+  {{/each}}
+</section>

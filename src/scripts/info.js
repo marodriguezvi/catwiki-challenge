@@ -1,5 +1,6 @@
 import '../styles/index.scss';
 import { getBreedImage } from './api';
+import { resizeElements } from './utils';
 import infoTemplate from '../templates/info.hbs';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -21,11 +22,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
   homeContent.innerHTML = infoTemplate(data);
 
-  window.addEventListener('resize', () => {
-    const images = document.querySelectorAll('.image');
+  const images = document.querySelectorAll('.image');
+  resizeElements(images);
 
-    images.forEach((el) => {
-      el.style.height = `${el.offsetWidth}px`;
-    });
+  window.addEventListener('resize', () => {
+    resizeElements(images);
   });
 });

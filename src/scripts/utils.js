@@ -18,4 +18,14 @@ function importAll(r) {
   return r.keys().forEach(r);
 }
 
-export { getSrcImage, importAll };
+/**
+ * Get all files from webpack context.
+ * @param {Array} listElements - HTMLElements.
+ */
+function resizeElements(listElements) {
+  listElements.forEach((el) => {
+    el.style.height = `${el.offsetWidth}px`;
+  });
+}
+
+export { getSrcImage, importAll, resizeElements };

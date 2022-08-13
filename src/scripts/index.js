@@ -1,9 +1,9 @@
 import '../styles/index.scss';
 import { getBreeds } from './api';
-import { getSrcImage, importAll } from './utils';
 import { MOST_SEARCHED_BREEDS } from './constants';
 import homeTemplate from '../templates/home.hbs';
 import listTemplate from '../templates/partials/list.hbs';
+import { getSrcImage, importAll, resizeElements } from './utils';
 
 importAll(require.context('../assets/', false, /\.png$/));
 
@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   const searchInput = document.getElementById('search-input');
   const listContent = document.getElementById('list-template-content');
-  const imageContainer = document.querySelector('.search__body .galery__item');
+  const images = document.querySelectorAll('.favorite .galery .image');
+  resizeElements(images);
 
   const data = await getBreeds();
   listContent.innerHTML = listTemplate({ breeds: data });
@@ -32,12 +33,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   window.addEventListener('resize', () => {
-    const images = document.querySelectorAll('.search__body .image');
     listContent.style.width = `${searchInput.offsetWidth}px`;
-
-    images.forEach((el) => {
-      el.style.height = `${imageContainer.offsetWidth}px`;
-    });
+    resizeElements(images);
   });
 
   searchInput.addEventListener('focus', () => {

@@ -1,11 +1,12 @@
 import '../styles/index.scss';
-import { getBreeds } from './api';
+import { getBreeds, getBreedImage } from './api';
 import { MOST_SEARCHED_BREEDS } from './constants';
 import homeTemplate from '../templates/home.hbs';
 import listTemplate from '../templates/partials/list.hbs';
-import { getSrcImage, importAll, resizeElements } from './utils';
+import { getSrcImage, importAll, resizeElements, getBreedInfo } from './utils';
 
 importAll(require.context('../assets/', false, /\.png$/));
+let breeds = [];
 
 document.addEventListener('DOMContentLoaded', async () => {
   let homeContent = document.getElementById('home-template-content');
@@ -17,14 +18,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   const images = document.querySelectorAll('.favorite .galery .image');
   resizeElements(images);
 
-  const data = await getBreeds();
-  listContent.innerHTML = listTemplate({ breeds: data });
+  breeds = await getBreeds();
+  listContent.innerHTML = listTemplate({ breeds });
   listContent.style.width = `${searchInput.offsetWidth}px`;
   setListItemEvent(listContent);
 
   searchInput.addEventListener('input', (event) => {
     const filterText = event.target.value;
-    const filterBreeds = data.filter((item) => {
+    const filterBreeds = breeds.filter((item) => {
       return item.name.toLowerCase().match(filterText);
     });
 
@@ -47,6 +48,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       listContent.classList.add('hidden');
     }, 200);
   });
+
+  const breedList = MOST_SEARCHED_BREEDS.map((el) => {
+    return el.id;
+  });
+
+  const response = await getBreedImage(breedList);
+  const topBreeds = getBreedInfo(response);
+  localStorage.setItem('topBreeds', JSON.stringify(topBreeds));
 });
 
 /**
@@ -55,7 +64,9 @@ document.addEventListener('DOMContentLoaded', async () => {
  */
 function setListItemEvent(listElement) {
   listElement.addEventListener('click', (event) => {
-    if (event.target.dataset.id) {
+    const dataset = event.target.dataset;
+    if (dataset.id) {
+      localStorage.setItem('breedInfo', JSON.stringify(breeds[parseInt(dataset.index)]));
       window.location.assign(`${window.location.origin}/info.html?id=${event.target.dataset.id}`);
     }
   });

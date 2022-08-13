@@ -1,9 +1,9 @@
 <section class="breed">
-  <div class="breed__image">
-    <img src={{breedImage}} class="image" alt="cat image">
-  </div>
-  <div class="breed__information">
-    {{#with breedInfo}}
+  {{#with breedInfo}}
+    <div class="breed__image">
+      <img src={{image.url}} class="image" alt="cat image">
+    </div>
+    <div class="breed__information">
       <h1 class="breed__title title">{{name}}</h1>
       <p>{{description}}</p>
       <p><span class="bold">Temperament:</span> {{temperament}}</p>
@@ -17,16 +17,10 @@
       {{{bar 'Health issues' health_issues 5 }}}
       {{{bar 'Social needs' social_needs 5 }}}
       {{{bar 'Stranger friendly' stranger_friendly 5 }}}
-    {{/with}}
-  </div>
+    </div>
+  {{/with}}
 </section>
 <section class="images">
   <h2 class="title">Other photos</h2>
-  <div class="galery">
-    {{#each otherImage}}
-      <div class="galery__item">
-        <img src={{this}} alt="cat image" class="image">
-      </div>
-    {{/each}}
-  </div>
+  <div id="galery-template-content"></div>
 </section>

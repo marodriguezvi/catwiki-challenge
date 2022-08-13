@@ -28,4 +28,20 @@ function resizeElements(listElements) {
   });
 }
 
-export { getSrcImage, importAll, resizeElements };
+/**
+ * Get all files from webpack context.
+ * @param {Array} breedList - Breed list.
+ * @return {Array} - Filtered breed information.
+ */
+function getBreedInfo(breedList) {
+  return breedList.map((el, index) => {
+    return {
+      index: index + 1,
+      name: el[0].breeds[0].name,
+      description: el[0].breeds[0].description,
+      imageUrl: el[0].url,
+    };
+  });
+}
+
+export { getSrcImage, importAll, resizeElements, getBreedInfo };

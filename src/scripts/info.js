@@ -2,6 +2,7 @@ import '../styles/index.scss';
 import { getBreedImage } from './api';
 import { resizeElements } from './utils';
 import infoTemplate from '../templates/info.hbs';
+import galeryTemplate from '../templates/partials/galery.hbs';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const homeContent = document.getElementById('info-template-content');
@@ -10,19 +11,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  let response = await getBreedImage([searchParams.get('id')], 9);
-  response = response[0];
-  const breedImages = response.map((el) => {
+  let breedInfo = JSON.parse(localStorage.getItem('breedInfo'));
+  homeContent.innerHTML = infoTemplate({ breedInfo });
+
+  let images = document.querySelectorAll('.image');
+  resizeElements(images);
+
+  const galeryContent = document.getElementById('galery-template-content');
+  let response = await getBreedImage([searchParams.get('id')], 8);
+  const imageUrls = response[0].map((el) => {
     return el.url;
   });
-  const data = {
-    breedInfo: response[0].breeds[0],
-    breedImage: breedImages[0],
-    otherImage: breedImages.slice(1),
-  };
-  homeContent.innerHTML = infoTemplate(data);
+  galeryContent.innerHTML = galeryTemplate({ images: imageUrls });
 
-  const images = document.querySelectorAll('.image');
+  images = document.querySelectorAll('.image');
   resizeElements(images);
 
   window.addEventListener('resize', () => {

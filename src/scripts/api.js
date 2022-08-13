@@ -17,7 +17,7 @@ async function getBreeds() {
 }
 
 /**
- * Get breed.
+ * Get breed image.
  * @param {Array} breedIds - Breed id list.
  * @param {Number} limit - Response limit.
  * @return {Promise} Promise with data.

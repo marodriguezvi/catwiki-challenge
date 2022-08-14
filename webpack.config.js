@@ -19,7 +19,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist/'),
-    publicPath: '/catwiki-challenge',
+    publicPath: '/catwiki-challenge/',
     filename: 'js/[name].bundle.js',
     clean: true,
   },

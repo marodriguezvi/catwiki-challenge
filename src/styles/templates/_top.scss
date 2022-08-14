@@ -5,15 +5,15 @@
 
   &__item {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    gap: 30px;
-    width: 95%;
+    row-gap: 10px;
     margin-bottom: 30px;
   }
 
   &__image {
-    width: 180px;
-    min-width: 180px;
+    width: 210px;
+    min-width: 210px;
 
     .image {
       object-fit: cover;
@@ -25,19 +25,20 @@
   }
 
   &__paragraph {
-    width: 80%;
+    width: 100%;
     min-width: 270px;
   }
 }
 
-@media screen and (max-width: $breakpoint-mobile) {
+@media screen and (min-width: $breakpoint-tablet) {
   .top-list {
     &__item {
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      column-gap: 30px;
     }
 
     &__paragraph {
-      width: 100%;
+      width: calc(100% - 210px - 10%);
     }
   }
 }

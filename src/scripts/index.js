@@ -74,7 +74,7 @@ function setListItemEvent(listElement) {
     const dataset = event.target.dataset;
     if (dataset.id) {
       localStorage.setItem('breedInfo', JSON.stringify(breeds[parseInt(dataset.index)]));
-      window.location.assign(`${window.location.origin}/info.html?id=${event.target.dataset.id}`);
+      window.location.assign(`${window.location.origin}/catwiki-challenge/info.html?id=${event.target.dataset.id}`);
     }
   });
 }

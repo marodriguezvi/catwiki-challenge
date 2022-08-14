@@ -76,16 +76,12 @@ module.exports = {
         type: 'asset/inline',
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|ttf)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'assets/[name][ext]',
         },
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-      },
+      }
     ],
   },
   optimization: {

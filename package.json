@@ -5,13 +5,20 @@
   "main": "./src/scripts/index",
   "scripts": {
     "start": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [
     "handlebars",
     "javascript"
   ],
   "author": "Mauricio Rodriguez <mrodriguezv92@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marodriguezvi/catwiki-challenge"
+  },
+  "homepage": "https://github.com/marodriguezvi.github.io/catwiki-challenge",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.18.9",
@@ -22,6 +29,7 @@
     "css-minimizer-webpack-plugin": "^4.0.0",
     "dotenv-webpack": "^8.0.0",
     "eslint": "^8.20.0",
+    "gh-pages": "^4.0.0",
     "handlebars-loader": "^1.7.2",
     "html-loader": "^4.1.0",
     "html-webpack-plugin": "^5.5.0",

@@ -10,12 +10,12 @@ function getSrcImage(breedId = '', size = 'small') {
 }
 
 /**
- * Get all files from webpack context.
- * @param {Context} r - Webpack context.
- * @return {Array} All files.
+ * Add favicon to current document.
+ * @param {String} path - Icon path.
  */
-function importAll(r) {
-  return r.keys().forEach(r);
+function addFavicon(path) {
+  const icon = document.querySelector('link[rel="icon"]');
+  icon.href = path;
 }
 
 /**
@@ -44,4 +44,4 @@ function getBreedInfo(breedList) {
   });
 }
 
-export { getSrcImage, importAll, resizeElements, getBreedInfo };
+export { getSrcImage, addFavicon, resizeElements, getBreedInfo };

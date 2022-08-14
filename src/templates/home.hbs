@@ -25,7 +25,7 @@
         <a href="/top.html" class="favorite__link link">SEE MORE ➙</a>
       </div>
       <div class="galery">
-        {{#each searchBreedsSrc}}
+        {{#each searchImages}}
           <div class="galery__item">
             <img class="image" src={{src}} alt="cat image">
             <p class="galery__subtitle">{{name}}</p>
@@ -45,9 +45,9 @@
         target="_blank" class="knowledge__link link">READ MORE ➙</a>
     </div>
     <div class="knowledge__pictures">
-      <img class="image" src="../assets/image 1.png" alt="cat image">
-      <img class="image" src="../assets/image 2.png" alt="cat image">
-      <img class="image" src="../assets/image 3.png" alt="cat image">
+      {{#each knowledgeImages}}
+        <img class="image" src={{this}} alt="cat image">
+      {{/each}}
     </div>
   </div>
 </section>

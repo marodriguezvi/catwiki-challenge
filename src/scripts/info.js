@@ -1,6 +1,7 @@
 import '../styles/index.scss';
+import icon from '../assets/icon.png';
 import { getBreedImage } from './api';
-import { resizeElements } from './utils';
+import { resizeElements, addFavicon } from './utils';
 import infoTemplate from '../templates/info.hbs';
 import galeryTemplate from '../templates/partials/galery.hbs';
 
@@ -13,6 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   let breedInfo = JSON.parse(localStorage.getItem('breedInfo'));
   homeContent.innerHTML = infoTemplate({ breedInfo });
+  addFavicon(icon);
 
   let images = document.querySelectorAll('.image');
   resizeElements(images);

@@ -8,7 +8,7 @@
 
     &--image {
       background-color: #050709;
-      background-image: url('../assets/HeroImagelg.png');
+      background-image: url('../assets/HeroImagemd.png');
       background-size: contain;
       background-repeat: no-repeat;
       background-position: right;
@@ -114,7 +114,7 @@
 
   &__title {
     margin: 0px;
-    width: 275px;
+    width: 300px;
   }
 
   &__subtitle {
@@ -189,6 +189,11 @@
 }
 
 @media screen and (max-width: $breakpoint-mobile) {
+  .search__header--image {
+    background-image: url('../assets/HeroImagesm.png');
+    background-size: cover;
+  }
+
   .form {
     width: 50%;
   }

@@ -1,17 +1,24 @@
 import '../styles/index.scss';
+import icon from '../assets/icon.png';
+import image1 from '../assets/image_1.png';
+import image2 from '../assets/image_2.png';
+import image3 from '../assets/image_3.png';
 import { getBreeds, getBreedImage } from './api';
 import { MOST_SEARCHED_BREEDS } from './constants';
 import homeTemplate from '../templates/home.hbs';
 import listTemplate from '../templates/partials/list.hbs';
-import { getSrcImage, importAll, resizeElements, getBreedInfo } from './utils';
+import { getSrcImage, resizeElements, getBreedInfo, addFavicon } from './utils';
 
-importAll(require.context('../assets/', false, /\.png$/));
 let breeds = [];
 
 document.addEventListener('DOMContentLoaded', async () => {
   let homeContent = document.getElementById('home-template-content');
-  const searchBreedsSrc = getSearchedBreedsSrc();
-  homeContent.innerHTML = homeTemplate({ searchBreedsSrc });
+  homeContent.innerHTML = homeTemplate({
+    icon,
+    searchImages: getSearchedBreedsSrc(),
+    knowledgeImages: [image1, image2, image3],
+  });
+  addFavicon(icon);
 
   const searchInput = document.getElementById('search-input');
   const listContent = document.getElementById('list-template-content');

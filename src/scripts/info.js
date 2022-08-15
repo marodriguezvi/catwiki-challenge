@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  let breedInfo = JSON.parse(localStorage.getItem('breedInfo'));
+  let breedInfo = JSON.parse(localStorage.getItem(searchParams.get('id')));
   homeContent.innerHTML = infoTemplate({ breedInfo });
   addFavicon(icon);
 

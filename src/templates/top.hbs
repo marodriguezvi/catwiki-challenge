@@ -3,10 +3,12 @@
   {{#each breeds}}
     <div class="top-list__item">
       <div class="top-list__image">
-        <img src={{imageUrl}} class="image" alt="cat image">
+        <img src={{image.url}} class="image" alt="cat image">
       </div>
       <div class="top-list__paragraph">
-        <h2 class="top-list__title title">{{index}}. {{name}}</h2>
+        <a href={{concatenate 'info.html?id=' id}} class="link">
+          <h2 class="top-list__title title">{{add @index 1}}. {{name}}</h2>
+        </a>
         <p>{{description}}</p>
       </div>
     </div>

@@ -1,8 +1,8 @@
-# Catwiki
+# [Catwiki](https://marodriguezvi.github.io/catwiki-challenge/)
 
 App to search for different breeds of cats and their respective images.
 
-This app is based on the [CatWiki challenge](https://devchallenges.io/challenges/f4NJ53rcfgrP6sBMD2jt).
+This app is based on the [Catwiki challenge](https://devchallenges.io/challenges/f4NJ53rcfgrP6sBMD2jt).
 
 
 ## Build Setup

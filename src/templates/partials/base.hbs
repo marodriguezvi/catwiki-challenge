@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Catwiki</title>
+    <base href={{webpackConfig.output.publicPath}}>
+    <title>{{htmlWebpackPlugin.options.title}}</title>
     <link rel="icon" href="" />
   </head>
   <body>
     <div class="container">
       <header class="header">
-        <a href="/catwiki-challenge/">{{>logo}}</a>
+        <a href="">{{>logo}}</a>
       </header>
       <main class="main">
         {{>@partial-block}}

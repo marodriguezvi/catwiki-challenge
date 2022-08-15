@@ -4,8 +4,9 @@
   "description": "Understanding concepts of handlebars.js",
   "main": "./src/scripts/index",
   "scripts": {
-    "start": "webpack serve --mode development",
-    "build": "webpack --mode production",
+    "serve": "webpack serve --config webpack.config.dev.js",
+    "develop": "webpack --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },

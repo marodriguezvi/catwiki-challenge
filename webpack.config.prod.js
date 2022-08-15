@@ -6,6 +6,7 @@ const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 module.exports = {
+  mode: 'production',
   entry: {
     index: {
       import: './src/scripts/index.js',
@@ -23,11 +24,7 @@ module.exports = {
     filename: 'js/[name].bundle.js',
     clean: true,
   },
-  devtool: 'inline-source-map',
-  devServer: {
-    hot: false,
-    liveReload: true,
-  },
+  target: 'browserslist',
   resolve: {
     alias: {
       handlebars: 'handlebars/dist/cjs/handlebars',
@@ -82,7 +79,7 @@ module.exports = {
         generator: {
           filename: 'assets/[name][ext]',
         },
-      }
+      },
     ],
   },
   optimization: {
@@ -97,16 +94,19 @@ module.exports = {
       template: path.resolve(__dirname, './src/index.hbs'),
       chunks: ['index'],
       filename: './index.html',
+      title: 'Catwiki',
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/info.hbs'),
       chunks: ['info'],
       filename: './info.html',
+      title: 'Catwiki',
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, './src/top.hbs'),
       chunks: ['top'],
       filename: './top.html',
+      title: 'Catwiki',
     }),
     new MiniCssExtractPlugin({
       filename: 'main.css',
